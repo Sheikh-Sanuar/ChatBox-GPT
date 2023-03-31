@@ -1,5 +1,5 @@
 # ChatBox-GPT
-This is a chat application with Open Ai.
+This is a chat application created by Sheikh Sanuar with Open Ai.
 
 Here is the Link you can visit and start asking and chatting.
 
