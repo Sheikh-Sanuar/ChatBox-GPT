@@ -28,12 +28,8 @@ app.post('/', async (req, res) => {
 			model: 'gpt-4',
 			 messages: [
                          {"role":"user", "content": prompt},
+		         {"role": "system", "content": "You are a helpful assistant."},
                          ]
-			max_tokens: 3000,
-			temperature: 0.5,
-			top_p: 1,
-			frequency_penalty: 0.5,
-			presence_penalty: 0,
 		});
 
 		console.log(response.data.choices[0].message.content)
