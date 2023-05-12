@@ -26,7 +26,9 @@ app.post('/', async (req, res) => {
 
 		const response = await openai.createChatCompletion({
 			model: 'gpt-4',
-			prompt: `${prompt}`,
+			 messages: [
+                         {"role":"user", "content": prompt},
+                         ]
 			max_tokens: 3000,
 			temperature: 0.5,
 			top_p: 1,
@@ -34,12 +36,13 @@ app.post('/', async (req, res) => {
 			presence_penalty: 0,
 		});
 
+		console.log(response.data.choices[0].message.content)
 		res.status(200).send({
-			bot: response.data.choices[0].text,
+			bot: response.data.choices[0].message.content,
 		});
 	} catch (error) {
 		console.error(error);
-		res.status(500).send(error || 'Something went wrong');
+		res.status(500).send('Something went wrong');
 	}
 });
 
